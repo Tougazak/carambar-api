@@ -1,13 +1,13 @@
-// Import de Sequelize
 const { Sequelize } = require('sequelize');
+const path = require('path');
 
-// Création d'une instance Sequelize configurée pour utiliser SQLite
+// On crée une instance Sequelize en précisant le dialecte SQLite
+// et l'endroit où le fichier de la base de données sera créé/sauvegardé.
 const sequelize = new Sequelize({
-  dialect: 'sqlite',             // Utilisation de SQLite comme base de données
-  storage: 'database.sqlite',    // Le fichier où la base SQLite sera stockée
-  logging: false,                // On désactive les logs SQL pour ne pas polluer la console
+  dialect: 'sqlite',              // On utilise SQLite
+  storage: path.join(__dirname, '..', 'database.sqlite'), // chemin vers le fichier BDD
+  logging: console.log            // log des requêtes SQL dans le terminal (pratique pour débugger)
 });
 
-// On exporte cette instance pour pouvoir la réutiliser dans d'autres fichiers
+// On exporte l'instance sequelize pour la réutiliser partout dans l'app
 module.exports = { sequelize };
-

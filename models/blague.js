@@ -2,7 +2,7 @@
 const { DataTypes } = require('sequelize');
 
 // On récupère la connexion à la base de données
-const sequelize = require('../config/database');
+const sequelize = require('./index').sequelize;
 
 // On définit un modèle "Blague" avec Sequelize
 const Blague = sequelize.define('Blague', {

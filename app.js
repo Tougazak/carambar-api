@@ -8,6 +8,9 @@ const blaguesRouter = require('./routes/blagues');
 // Import de la connexion Sequelize pour la base de données
 const { sequelize } = require('./models');
 
+// Import le modèle
+const Blague = require('./models/blague.js');
+
 // Middleware pour analyser automatiquement les corps de requête JSON
 app.use(express.json());
 
@@ -31,6 +34,3 @@ sequelize.sync()
     // Si la synchronisation échoue, on log l'erreur
     console.error("Erreur de synchronisation :", err);
   });
-
-// Un petit log de fin de script (normalement jamais atteint avant écoute serveur)
-console.log("Fin du script app.js");
