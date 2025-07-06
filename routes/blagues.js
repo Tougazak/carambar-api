@@ -11,11 +11,11 @@ router.post('/blagues', blagueController.createBlague);
 // Route GET pour récupérer toutes les blagues
 router.get('/blagues', blagueController.getAllBlagues);
 
-// Route GET pour récupérer une blague par son id
-router.get('/blagues/:id', blagueController.getBlagueById);
-
 // Route GET pour récupérer une blague aléatoire
 router.get('/blagues/random', blagueController.getRandomBlague);
+
+// Route GET pour récupérer une blague par son id
+router.get('/blagues/:id', blagueController.getBlagueById);
 
 // Export du routeur pour l'utiliser dans app.js
 module.exports = router;

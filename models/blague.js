@@ -6,6 +6,12 @@ const sequelize = require('./index').sequelize;
 
 // On définit un modèle "Blague" avec Sequelize
 const Blague = sequelize.define('Blague', {
+  // L'id de la blague
+   id: {
+     type: DataTypes.INTEGER,
+     primaryKey: true,
+     autoIncrement: true,   // <= essentiel pour que Sequelize gère l'id
+   },
   // La colonne "texte" va contenir la blague en texte simple
   texte: {
     type: DataTypes.STRING,  // type string (texte court)
