@@ -18,6 +18,33 @@ const Blague = require('./models/blague.js');
 // Middleware pour analyser automatiquement les corps de requête JSON
 app.use(express.json());
 
+// Configuration de SWAGGER
+const swaggerUi = require('swagger-ui-express');
+const swaggerJSDoc = require('swagger-jsdoc');
+
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Carambar & Co API",
+      version: "1.0.0",
+      description: "API de blagues versionnée pour Carambar & co",
+    },
+    servers: [
+      {
+        url: "https://carambar-api-4ox1.onrender.com/api/v1", // adapte si déployé
+      },
+    ],
+  },
+  apis: ["./routes/blagues.js"], // Swagger lira les commentaires JSDoc dans tes fichiers de routes
+};
+
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
+
+// Middleware pour servir la doc Swagger UI à l'URL /api-docs
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
 // Toutes les routes qui commencent par /api/v1 seront gérées par blaguesRouter
 app.use('/api/v1', blaguesRouter);
 
