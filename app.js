@@ -5,6 +5,10 @@ const app = express();
 // Import du routeur gérant les routes liées aux blagues
 const blaguesRouter = require('./routes/blagues');
 
+// Pour pouvoir appeler le back depuis un autre navigateur
+const cors = require('cors');
+app.use(cors());
+
 // Import de la connexion Sequelize pour la base de données
 const { sequelize } = require('./models');
 
